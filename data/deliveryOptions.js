@@ -27,11 +27,21 @@ export function getDeliveryOptionId (deliveryOptionId) {
 }
 
 export function calDeliveryDate(deliveryOption) {
-    const today = dayjs();
-    const deliveryDate = today.add(
-        deliveryOption.deliveryDays, 'days'
-    );
-    const dateString = deliveryDate.format('dddd, MMMM D');
+    let {deliveryDays} = deliveryOption;
+    let deliveryDate = dayjs();
+    
+    while (deliveryDays > 0) {
+        deliveryDate = deliveryDate.add(1, 'day');
+        if (isWeekend(deliveryDate)) {          
+            continue;
+        }
+        deliveryDays--;
+    }
 
-    return dateString;
+    return deliveryDate.format('dddd, MMMM D');
+}
+
+export function isWeekend(date) {
+    const day = date.format('dddd');
+    return day === 'Saturday' || day === 'Sunday'
 }
