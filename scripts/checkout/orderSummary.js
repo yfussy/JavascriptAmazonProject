@@ -128,6 +128,7 @@ document.querySelectorAll('.js-delete-link').forEach(link => {
 function updateCartQuantity() {
     const cartQuantity = calCartQuantity();
     document.querySelector('.js-return-to-home-link').innerHTML = `${cartQuantity} items` ;
+    renderPaymentSummary();
 };
 
 updateCartQuantity();
