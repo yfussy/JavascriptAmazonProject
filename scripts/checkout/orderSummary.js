@@ -5,10 +5,7 @@ import {products, getProduct} from '../../data/products.js'
 import formatCurrency from '../utils/money.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import {deliveryOptions, getDeliveryOptionId} from '../../data/deliveryOptions.js'
-
-const today = dayjs();
-const deliveryDate = today.add(7, 'days');
-console.log(deliveryDate.format('dddd, MMMM D'));
+import { renderPaymentSummary } from './paymentSummary.js';
 
 export function renderOrderSummary() {
 
@@ -123,6 +120,7 @@ document.querySelectorAll('.js-delete-link').forEach(link => {
         
         const container = document.querySelector(`.js-cart-item-container-${productId}`);
         container.remove()
+        renderPaymentSummary();
         updateCartQuantity();
     });
 });
@@ -146,21 +144,21 @@ document.querySelectorAll('.js-update-link')
 document.querySelectorAll('.js-save-link')
     .forEach((link) => {
     link.addEventListener('click', () => {
-        const {productId} = link.dataset;
+            const {productId} = link.dataset;
 
-        const container = document.querySelector(
-        `.js-cart-item-container-${productId}`
-        );
-        container.classList.remove('is-editing-quantity');
+            const container = document.querySelector(
+            `.js-cart-item-container-${productId}`
+            );
+            container.classList.remove('is-editing-quantity');
 
-        const quantityInput = document.querySelector(`.js-quantity-input-${productId}`);
-        const newQuantity = Number(quantityInput.value);
-        updateQuantity(productId, newQuantity);
+            const quantityInput = document.querySelector(`.js-quantity-input-${productId}`);
+            const newQuantity = Number(quantityInput.value);
+            updateQuantity(productId, newQuantity);
 
-        const quantityLabel = document.querySelector(`.js-quantity-label-${productId}`);
-        quantityLabel.innerHTML = newQuantity;
-        updateCartQuantity();
-    });
+            const quantityLabel = document.querySelector(`.js-quantity-label-${productId}`);
+            quantityLabel.innerHTML = newQuantity;
+            updateCartQuantity();
+        });
     });
 
 document.querySelectorAll('.js-quantity-input').forEach(input => {
@@ -189,6 +187,7 @@ document.querySelectorAll('.js-delivery-option').forEach(element => {
     const {productId, deliveryOptionId} = element.dataset;
     updateDeliveryOption(productId, deliveryOptionId);
     renderOrderSummary();
+    renderPaymentSummary();
     });
 });
 }
