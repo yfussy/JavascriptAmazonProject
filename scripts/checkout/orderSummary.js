@@ -95,7 +95,8 @@ export function renderOrderSummary() {
             data-delivery-option-id="${deliveryOption.id}">
             <input type="radio"
                 ${isChecked ? 'checked' : ''}
-                class="delivery-option-input"
+                class="delivery-option-input 
+                js-delivery-option-input-${matchingProduct.id}-${deliveryOption.id}"
                 name="delivery-option-${matchingProduct.id}">
             <div>
                 <div class="delivery-option-date">
