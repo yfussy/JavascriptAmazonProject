@@ -1,10 +1,4 @@
-import {
-    cart, 
-    removeFromCart, 
-    calCartQuantity, 
-    updateQuantity, 
-    updateDeliveryOption
-  } from '../../data/cart.js';
+import { cart } from '../../data/cart-class.js';
 import { products, getProduct } from '../../data/products.js'
 import formatCurrency from '../utils/money.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
@@ -16,7 +10,7 @@ export function renderOrderSummary() {
 
     let cartSummaryHTML = '';
 
-    cart.forEach(cartItem => {
+    cart.cartItems.forEach(cartItem => {
         const productId = cartItem.productId;
 
         const matchingProduct = getProduct(productId);
@@ -117,7 +111,7 @@ export function renderOrderSummary() {
     document.querySelectorAll('.js-delete-link').forEach(link => {
         link.addEventListener('click', () => {
             const {productId} = link.dataset;
-            removeFromCart(productId);
+            cart.removeFromCart(productId);
             renderOrderSummary();
             renderCheckoutHeader();
             renderPaymentSummary();
@@ -145,7 +139,7 @@ export function renderOrderSummary() {
 
                 const quantityInput = document.querySelector(`.js-quantity-input-${productId}`);
                 const newQuantity = Number(quantityInput.value);
-                updateQuantity(productId, newQuantity);
+                cart.updateQuantity(productId, newQuantity);
 
                 renderOrderSummary();
                 renderCheckoutHeader();
@@ -165,7 +159,7 @@ export function renderOrderSummary() {
 
             const quantityInput = document.querySelector(`.js-quantity-input-${productId}`);
             const newQuantity = Number(quantityInput.value);
-            updateQuantity(productId, newQuantity);
+            cart.updateQuantity(productId, newQuantity);
 
             renderOrderSummary();
             renderCheckoutHeader();
@@ -177,7 +171,7 @@ export function renderOrderSummary() {
     document.querySelectorAll('.js-delivery-option').forEach(element => {
         element.addEventListener('click', () => {
         const {productId, deliveryOptionId} = element.dataset;
-        updateDeliveryOption(productId, deliveryOptionId);
+        cart.updateDeliveryOption(productId, deliveryOptionId);
         renderOrderSummary();
         renderPaymentSummary();
         });
