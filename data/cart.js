@@ -1,5 +1,4 @@
 import { validDeliveryOption } from "./deliveryOptions.js";
-import { getProduct } from "./products.js";
 
 export let cart;
 
