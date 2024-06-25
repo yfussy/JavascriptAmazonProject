@@ -26,6 +26,18 @@ export function getDeliveryOptionId (deliveryOptionId) {
     return deliveryOption || deliveryOptions[0];
 }
 
+export function validDeliveryOption(deliveryOptionId) {
+    let exist = false;
+
+    deliveryOptions.forEach(option => {
+        if (option.id === deliveryOptionId) {
+            exist = true;
+        }
+    });
+
+    return exist;
+}
+
 export function calDeliveryDate(deliveryOption) {
     let {deliveryDays} = deliveryOption;
     let deliveryDate = dayjs();
