@@ -1,4 +1,4 @@
-import { deliveryOptions } from "../deliveryOptions-class.js";
+import { deliveryOptions } from "./deliveryOptions-class.js";
 
 class Cart {
     cartItems;

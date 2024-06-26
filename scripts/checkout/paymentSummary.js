@@ -1,6 +1,6 @@
 import { cart } from "../../data/cart-class.js";
 import { getProduct } from "../../data/products.js";
-import { deliveryOptions } from "../deliveryOptions-class.js";
+import { deliveryOptions } from "../../data/deliveryOptions-class.js";
 import formatCurrency from "../utils/money.js";
 import { orders } from "../../data/orders-class.js";
 

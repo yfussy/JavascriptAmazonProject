@@ -67,5 +67,3 @@ export const deliveryOptions = new Delivery([{
     deliveryDays: 1,
     priceCents: 999
 }]);
-
-console.log(deliveryOptions);
