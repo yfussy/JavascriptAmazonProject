@@ -14,7 +14,7 @@ function renderProductsGrid() {
     if (search) {
         filteredProducts = products.filter(product => {
             let matchingKeyword = false;
-            
+
             product.keywords.forEach(keyword => {
                 if (keyword.toLowerCase().includes(search.toLowerCase())) {
                     matchingKeyword = true;
@@ -124,5 +124,12 @@ function renderProductsGrid() {
     document.querySelector('.js-search-button').addEventListener('click', () => {
         const search = document.querySelector('.js-search-bar').value;
         window.location.href = `amazon.html?search=${search}`;
+    });
+
+    document.querySelector('.js-search-bar').addEventListener('keydown', event => {
+        if (event.key === 'Enter') {
+            const search = document.querySelector('.js-search-bar').value;
+            window.location.href = `amazon.html?search=${search}`;
+        }
     });
 }
