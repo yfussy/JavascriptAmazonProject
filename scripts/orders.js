@@ -88,7 +88,7 @@ async function loadPage() {
         document.querySelectorAll('.js-buy-again-button')
             .forEach(button => {
                 button.addEventListener('click', () => {
-                    cart.addtoCart(button.dataset.productId);
+                    cart.addToCart(button.dataset.productId);
 
                     button.innerHTML = 'Added';
                     setTimeout(() => {
