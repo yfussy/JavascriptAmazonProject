@@ -23,7 +23,7 @@ export class Order {
     getOrder(orderId) {
         let matchingOrder;
     
-        this.orders.forEach(order => {
+        this.orderLists.forEach(order => {
             if (order.id === orderId) {
                 matchingOrder = order;
             }
