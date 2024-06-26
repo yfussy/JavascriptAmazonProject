@@ -12,12 +12,12 @@ export class Order {
     }
     
     saveToStorage() {
-        localStorage.setItem(this.#localStorageKey, JSON.stringify(this.orders));
+        localStorage.setItem(this.#localStorageKey, JSON.stringify(this.orderLists));
     }
 
     addOrder(order) {
         this.orderLists.unshift(order);
-        saveToStorage();
+        this.saveToStorage();
     }    
 
     getOrder(orderId) {
