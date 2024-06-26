@@ -1,4 +1,4 @@
-class Order {
+export class Order {
     orderLists;
     #localStorageKey;
 
@@ -14,6 +14,11 @@ class Order {
     saveToStorage() {
         localStorage.setItem(this.#localStorageKey, JSON.stringify(this.orders));
     }
+
+    addOrder(order) {
+        this.orderLists.unshift(order);
+        saveToStorage();
+    }    
 
     getOrder(orderId) {
         let matchingOrder;
