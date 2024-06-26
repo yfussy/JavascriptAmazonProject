@@ -1,6 +1,6 @@
 import { cart } from "../../data/cart-class.js";
 import { getProduct } from "../../data/products.js";
-import { getDeliveryOptionId } from "../../data/deliveryOptions.js";
+import { deliveryOptions } from "../deliveryOptions-class.js";
 import formatCurrency from "../utils/money.js";
 import { orders } from "../../data/orders-class.js";
 
@@ -12,7 +12,7 @@ export function renderPaymentSummary() {
     cart.cartItems.forEach(cartItem => {
         const product = getProduct(cartItem.productId);
         productPriceCents += product.priceCents * cartItem.quantity;
-        const deliveryOption = getDeliveryOptionId(cartItem.deliveryOptionId);
+        const deliveryOption = deliveryOptions.getDeliveryOptionId(cartItem.deliveryOptionId);
         shippingPriceCents += deliveryOption.priceCents;
     });
 

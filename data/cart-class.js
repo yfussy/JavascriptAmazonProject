@@ -1,4 +1,4 @@
-import { validDeliveryOption } from "./deliveryOptions.js";
+import { deliveryOptions } from "../deliveryOptions-class.js";
 
 class Cart {
     cartItems;
@@ -97,7 +97,7 @@ class Cart {
         });
     
         if (matchingItem) {
-            if (validDeliveryOption(deliveryOptionId)) {
+            if (deliveryOptions.validDeliveryOption(deliveryOptionId)) {
                 matchingItem.deliveryOptionId = deliveryOptionId;
                 this.saveToStorage(); 
             }
