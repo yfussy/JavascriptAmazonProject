@@ -1,4 +1,4 @@
-import { getOrder } from "../data/orders.js";
+import { orders } from "../data/orders-oop.js";
 import { getProduct, loadProductsFetch } from "../data/products.js";
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 
@@ -9,7 +9,7 @@ async function loadPage() {
     const orderId = url.searchParams.get('orderId');
     const productId = url.searchParams.get('productId');
 
-    const order = getOrder(orderId);
+    const order = orders.getOrder(orderId);
     const product = getProduct(productId);
 
     let productDetails;
