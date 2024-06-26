@@ -117,5 +117,4 @@ export async function loadCartFetch() {
     const cart = await fetch(
         'https://supersimplebackend.dev/cart'
     )
-    console.log(cart.json());
 }
