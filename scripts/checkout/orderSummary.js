@@ -1,7 +1,7 @@
 import { cart } from '../../data/cart-class.js';
 import { getProduct } from '../../data/products.js'
 import formatCurrency from '../utils/money.js';
-import { calDeliveryDate, deliveryOptions, getDeliveryOptionId } from '../../data/deliveryOptions.js'
+import { deliveryOptions } from '../../data/deliveryOptions-class.js';
 import { renderPaymentSummary } from './paymentSummary.js';
 import { renderCheckoutHeader } from './checkoutHeader.js';
 
@@ -16,9 +16,9 @@ export function renderOrderSummary() {
 
         const deliveryOptionId = cartItem.deliveryOptionId;
 
-        const deliveryOption = getDeliveryOptionId(deliveryOptionId);
+        const deliveryOption = deliveryOptions.getDeliveryOptionId(deliveryOptionId);
 
-        const dateString = calDeliveryDate(deliveryOption)
+        const dateString = deliveryOptions.calDeliveryDate(deliveryOption)
 
         cartSummaryHTML +=
         `
@@ -71,9 +71,9 @@ export function renderOrderSummary() {
     function deliveryOptionsHTML(matchingProduct, cartItem) {
         let html = ``;
 
-        deliveryOptions.forEach(deliveryOption => {
+        deliveryOptions.deliveryLists.forEach(deliveryOption => {
         
-        const dateString = calDeliveryDate(deliveryOption);
+        const dateString = deliveryOptions.calDeliveryDate(deliveryOption);
 
         const priceString = deliveryOption.priceCents === 0
             ? 'FREE'
