@@ -1,6 +1,6 @@
 import { Product, Clothing, Appliance } from "../../data/products.js";
 
-describe('Test Suit: Product Class', () => {
+describe('Test Suite: Product Class', () => {
     let product;
 
     beforeEach(() =>{
@@ -49,7 +49,7 @@ describe('Test Suit: Product Class', () => {
     });
 });
 
-describe('Test Suit: Clothing Class', () => {
+describe('Test Suite: Clothing Class', () => {
     let clothing;
 
     beforeEach(() =>{
@@ -105,7 +105,7 @@ describe('Test Suit: Clothing Class', () => {
     });
 });
 
-describe('Test Suit: Appliance Class', () => {
+describe('Test Suite: Appliance Class', () => {
     let appliance;
 
     beforeEach(() =>{
